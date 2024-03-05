@@ -1,0 +1,5 @@
+require 'options'
+require 'autocommands'
+require 'keymap'
+require 'bootstrap-lazy'
+require 'plugins'
