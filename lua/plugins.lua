@@ -29,6 +29,7 @@ require('lazy').setup {
   require 'plugins.copilot',
   require 'plugins.dashboard',
   require 'plugins.lualine',
+  require 'plugins.neogit',
   -- Language-specific plugins
   -- Rust:
   require 'plugins.languages.crates',

@@ -2,7 +2,7 @@ return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons', 'nvim-lua/lsp-status.nvim', 'rebelot/kanagawa.nvim' },
   config = function()
-    local kcolors = require('kanagawa.colors').setup({ theme = "dragon" })
+    local kcolors = require('kanagawa.colors').setup { theme = 'dragon' }
     local theme = kcolors.theme
 
     local bubbles_theme = {
@@ -41,7 +41,7 @@ return {
             -- separator = { left = '' } --[[ , right_padding = 2 ]],
           },
         },
-        lualine_b = { 'filename', 'branch' },
+        lualine_b = { { 'filename', path = 1 }, 'branch' },
         lualine_c = {
           '%=', --[[ add your center compoentnts here in place of this comment ]]
         },
