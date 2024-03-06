@@ -33,6 +33,7 @@ return { -- Useful plugin to show you pending keybinds.
       ['<leader>m'] = { '<cmd>Mason<cr>', '[M]ason' },
       ['<leader>cf'] = { format, '[F]ormat code' },
       ['<leader>cc'] = { ':e $MYVIMRC <CR>', '[C]onfig' },
+      ['<leader>gg'] = { '<cmd>Neogit<CR>', 'Neo[G]it' },
     }
   end,
 }
