@@ -44,7 +44,7 @@ vim.keymap.set('n', '<C-v>', '<C-w><C-v>', { desc = 'Split the window vertically
 vim.keymap.set('n', '<C-s>', '<C-w><C-s>', { desc = 'Split the window horizontally' })
 
 -- Neotree
-vim.keymap.set('n', '<C-e>', '<cmd>Neotree toggle<cr>', { desc = 'Toggle Neotree' })
+vim.keymap.set('n', '<C-t>', '<cmd>Neotree toggle<cr>', { desc = 'Toggle Neotree' })
 
 -- Comment
 vim.keymap.set('x', 'gc', '<Plug>(comment_toggle_linewise_visual)')

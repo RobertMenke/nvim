@@ -30,6 +30,8 @@ require('lazy').setup {
   require 'plugins.dashboard',
   require 'plugins.lualine',
   require 'plugins.neogit',
+  require 'plugins.indent-scope',
+  require 'plugins.noice',
   -- Language-specific plugins
   -- Rust:
   require 'plugins.languages.crates',
