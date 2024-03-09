@@ -32,6 +32,7 @@ require('lazy').setup {
   require 'plugins.neogit',
   require 'plugins.indent-scope',
   require 'plugins.noice',
+ -- require 'airblade.vim-rooter',
   -- Language-specific plugins
   -- Rust:
   require 'plugins.languages.crates',

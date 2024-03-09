@@ -40,6 +40,8 @@ return {
         'NeoTreeEndOfBuffer',
         'NeoTreeGitUnstaged',
         'NeoTreeBufferNumber',
+        'NoicePopup',
+        'NoiceMini',
       },
       exclude_groups = {}, -- table: groups you don't want to clear
     }

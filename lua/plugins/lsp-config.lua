@@ -5,17 +5,17 @@ return { -- LSP Configuration & Plugins
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
-    { "folke/neoconf.nvim", cmd = "Neoconf", config = false, dependencies = { "nvim-lspconfig" } },
+    { 'folke/neoconf.nvim', cmd = 'Neoconf', config = false, dependencies = { 'nvim-lspconfig' } },
 
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-    { 'j-hui/fidget.nvim', opts = {
-      notification = {
-        window = {
-          winblend = 0,
-        },
-      },
-    } },
+    -- { 'j-hui/fidget.nvim', opts = {
+    --   notification = {
+    --     window = {
+    --       winblend = 0,
+    --     },
+    --   },
+    -- } },
   },
   config = function()
     -- Brief Aside: **What is LSP?**

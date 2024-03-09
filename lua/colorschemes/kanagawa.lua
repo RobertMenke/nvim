@@ -19,6 +19,9 @@ return {
     -- Telescope transparency
     vim.cmd 'highlight TelescopeBorder guibg=none'
     vim.cmd 'highlight TelescopeTitle guibg=none'
+    -- Noice/Mini transparency
+    vim.cmd 'highlight NoiceMini guibg=none'
+    -- vim.cmd 'highlight NormalFloat guibg=none'
     -- Lualine transparency
     vim.cmd 'highlight lualine_c_normal guibg=none'
     vim.cmd 'highlight lualine_c_insert guibg=none'

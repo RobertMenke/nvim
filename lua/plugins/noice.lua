@@ -23,6 +23,14 @@ return {
         view = 'mini',
       },
     },
+    -- Make noice's views transparent
+    views = {
+      mini = {
+        win_options = {
+          winblend = 0,
+        },
+      },
+    },
     presets = {
       bottom_search = true,
       command_palette = true,

@@ -219,5 +219,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>sn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, { desc = '[S]earch [N]eovim files' })
+
+    -- Register noice with telescope and add a keybind for it
+    require('telescope').load_extension 'noice'
+    vim.keymap.set('n', '<leader>sm', '<cmd>Telescope noice<cr>', { desc = '[S]earch [M]essages' })
   end,
 }
