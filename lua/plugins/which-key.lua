@@ -31,6 +31,31 @@ local function buffer_tree()
   require('neo-tree.command').execute { source = 'buffers', toggle = true }
 end
 
+local function is_neotree_open()
+  -- Iterate over all buffers
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    -- Check if the buffer is loaded and visible
+    if vim.api.nvim_buf_is_loaded(buf) then
+      -- Get the buffer's filetype
+      local filetype = vim.api.nvim_buf_get_option(buf, 'filetype')
+      -- If the filetype is 'neo-tree', then NeoTree is open
+      if filetype == 'neo-tree' then
+        return true
+      end
+    end
+  end
+  -- If no 'neo-tree' buffer is found, NeoTree is closed
+  return false
+end
+
+local function toggle_neotree()
+  if is_neotree_open() then
+    vim.cmd 'Neotree toggle'
+  else
+    vim.cmd 'Neotree source=filesystem reveal=true'
+  end
+end
+
 return { -- Useful plugin to show you pending keybinds.
   'folke/which-key.nvim',
   event = 'VimEnter', -- Sets the loading event to 'VimEnter'
@@ -50,11 +75,12 @@ return { -- Useful plugin to show you pending keybinds.
       ['<leader>ss'] = { '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>', 'Symbols' },
       ['<leader>m'] = { '<cmd>Mason<cr>', '[M]ason' },
       ['<leader>cf'] = { format, '[F]ormat code' },
-      ['<leader>cb'] = { copy_buffer_name, '[C]opy buffer name' },
-      ['<leader>cg'] = { branch_name, '[C]opy buffer name' },
+      ['<leader>cb'] = { copy_buffer_name, '[C]opy buffer path + name' },
+      ['<leader>cg'] = { branch_name, '[C]opy branch name' },
+      ['<leader>cd'] = { '<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>', 'Buffer [D]iagnostics' },
       ['<leader>cc'] = { ':e $MYVIMRC <CR>', '[C]onfig' },
       ['<leader>gg'] = { '<cmd>Neogit<CR>', 'Neo[G]it' },
-      ['<leader>e'] = { '<cmd>Neotree toggle<CR>', 'N[E]otree' },
+      ['<leader>e'] = { toggle_neotree, 'N[E]otree' },
       ['<leader>be'] = { buffer_tree, 'Buffer explorer' },
       ['<leader>cl'] = { '<cmd>LspInfo<cr>', 'Lsp Info' },
     }

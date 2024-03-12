@@ -1,5 +1,6 @@
 vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
 
+
 return {
   'nvim-neo-tree/neo-tree.nvim',
   version = '*',
@@ -17,6 +18,11 @@ return {
           visible = true, -- This is what you want: If you set this to `true`, all "hide" just mean "dimmed out"
           hide_dotfiles = false,
           hide_gitignored = false,
+        },
+        follow_current_file = {
+          enabled = false, -- This will find and focus the file in the active buffer every time
+          --               -- the current file is changed while the tree is open.
+          leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
         },
       },
       icon = {
@@ -56,7 +62,12 @@ return {
         enabled = true,
       },
       window = {
-        mappings = {},
+        mappings = {
+          ['P'] = function(state)
+            local node = state.tree:get_node()
+            require('neo-tree.ui.renderer').focus_node(state, node:get_parent_id())
+          end,
+        },
       },
     }
   end,

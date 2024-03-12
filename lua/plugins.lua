@@ -30,6 +30,7 @@ require('lazy').setup {
   require 'plugins.dashboard',
   require 'plugins.lualine',
   require 'plugins.neogit',
+  require 'plugins.gitsigns',
   require 'plugins.indent-scope',
   require 'plugins.noice',
  -- require 'airblade.vim-rooter',

@@ -70,3 +70,34 @@ vim.opt.laststatus = 3
 
 -- Turn on the filetype plugin
 vim.opt.filetype = 'on'
+
+-- Turn line wrapping off
+vim.opt.wrap = false
+
+-- Borrow lunarvim's diagnostic settings
+local icons = require 'icons'
+local default_diagnostic_config = {
+  signs = {
+    active = true,
+    values = {
+      { name = 'DiagnosticSignError', text = icons.diagnostics.Error },
+      { name = 'DiagnosticSignWarn', text = icons.diagnostics.Warning },
+      { name = 'DiagnosticSignHint', text = icons.diagnostics.Hint },
+      { name = 'DiagnosticSignInfo', text = icons.diagnostics.Information },
+    },
+  },
+  virtual_text = true,
+  update_in_insert = false,
+  underline = true,
+  severity_sort = true,
+  float = {
+    focusable = true,
+    style = 'minimal',
+    border = 'rounded',
+    source = 'always',
+    header = '',
+    prefix = '',
+  },
+}
+
+vim.diagnostic.config(default_diagnostic_config)
