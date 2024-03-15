@@ -33,6 +33,8 @@ require('lazy').setup {
   require 'plugins.gitsigns',
   require 'plugins.indent-scope',
   require 'plugins.noice',
+  require 'plugins.languages.neodev',
+  require 'plugins.diffview',
  -- require 'airblade.vim-rooter',
   -- Language-specific plugins
   -- Rust:

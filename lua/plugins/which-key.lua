@@ -80,6 +80,7 @@ return { -- Useful plugin to show you pending keybinds.
       ['<leader>cd'] = { '<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>', 'Buffer [D]iagnostics' },
       ['<leader>cc'] = { ':e $MYVIMRC <CR>', '[C]onfig' },
       ['<leader>gg'] = { '<cmd>Neogit<CR>', 'Neo[G]it' },
+      ['<leader>gd'] = { '<cmd>DiffviewOpen<CR>', '[D]iff view' },
       ['<leader>e'] = { toggle_neotree, 'N[E]otree' },
       ['<leader>be'] = { buffer_tree, 'Buffer explorer' },
       ['<leader>cl'] = { '<cmd>LspInfo<cr>', 'Lsp Info' },
