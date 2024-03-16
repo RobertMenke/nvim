@@ -75,7 +75,7 @@ vim.opt.filetype = 'on'
 vim.opt.wrap = false
 
 -- Borrow lunarvim's diagnostic settings
-local icons = require 'icons'
+local icons = require 'my.icons'
 local default_diagnostic_config = {
   signs = {
     active = true,

@@ -1,4 +1,4 @@
-local icons = require 'icons'
+local icons = require 'my.icons'
 
 return { -- Autocompletion
   'hrsh7th/nvim-cmp',
