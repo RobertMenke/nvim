@@ -39,6 +39,7 @@ return { -- Useful plugin to show you pending keybinds.
       ['<leader>cg'] = { git.BranchName, '[C]opy branch name' },
       ['<leader>cd'] = { '<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>', 'Buffer [D]iagnostics' },
       ['<leader>cc'] = { ':e $MYVIMRC <CR>', '[C]onfig' },
+      ['<leader>ct'] = { '<cmd>TSContextToggle<CR>', '[T]reesitter Context Toggle' },
       ['<leader>gg'] = { '<cmd>Neogit<CR>', 'Neo[G]it' },
       ['<leader>gd'] = { '<cmd>DiffviewOpen<CR>', '[D]iff view' },
       ['<leader>e'] = { neotreeUtil.ToggleNeotree, 'N[E]otree' },
