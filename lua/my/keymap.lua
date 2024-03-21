@@ -53,3 +53,6 @@ vim.keymap.set('x', 'gc', '<Plug>(comment_toggle_linewise_visual)')
 vim.keymap.set('n', '<C-n>', ':cn<CR>', { desc = 'Go to the next item in the quickfix list' })
 vim.keymap.set('n', '<C-p>', ':cp<CR>', { desc = 'Go to the previous item in the quickfix list' })
 
+-- In visual mode, pressing > or < will indent the selected lines without requiring repeated keypresses
+vim.keymap.set('v', '>', '>gv', { noremap = true, silent = true })
+vim.keymap.set('v', '<', '<gv', { noremap = true, silent = true })

@@ -26,13 +26,13 @@ return { -- Useful plugin to show you pending keybinds.
       require('conform').format { async = true, lsp_fallback = true }
     end
     -- Document existing key chains
+    -- lsp-config.lua has several LSP related key mappings
     require('which-key').register {
       ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
       ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
       ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
       ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
       ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-      ['<leader>ss'] = { '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>', 'Symbols' },
       ['<leader>m'] = { '<cmd>Mason<cr>', '[M]ason' },
       ['<leader>cf'] = { format, '[F]ormat code' },
       ['<leader>cb'] = { fs.CopyBufferName, '[C]opy buffer path + name' },
