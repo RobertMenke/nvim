@@ -1,6 +1,5 @@
 vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
 
-
 return {
   'nvim-neo-tree/neo-tree.nvim',
   version = '*',
@@ -67,6 +66,16 @@ return {
             local node = state.tree:get_node()
             require('neo-tree.ui.renderer').focus_node(state, node:get_parent_id())
           end,
+          ['l'] = 'open',
+          ['h'] = 'close_node',
+          ['Y'] = {
+            function(state)
+              local node = state.tree:get_node()
+              local path = node:get_id()
+              vim.fn.setreg('+', path, 'c')
+            end,
+            desc = 'Copy Path to Clipboard',
+          },
         },
       },
     }

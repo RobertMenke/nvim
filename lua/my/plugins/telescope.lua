@@ -112,6 +112,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
           '--ignore-file',
         },
         dynamic_preview_title = true,
+        path_display = { "filename_first" },
         mappings = {
           i = {
             ['<C-q>'] = smart_send_to_qflist,

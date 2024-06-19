@@ -26,7 +26,7 @@ require('lazy').setup {
   require 'my.plugins.autosave',
   require 'my.plugins.bqf',
   require 'my.plugins.treesitter-context',
-  require 'my.plugins.copilot',
+  -- require 'my.plugins.copilot',
   require 'my.plugins.dashboard',
   require 'my.plugins.lualine',
   require 'my.plugins.neogit',
@@ -39,7 +39,8 @@ require('lazy').setup {
   -- Language-specific plugins
   -- Rust:
   require 'my.plugins.languages.crates',
-  require 'my.plugins.languages.rust-tools',
+  -- require 'my.plugins.languages.rust-tools',
+  require 'my.plugins.languages.rustacean-nvim',
   -- Typescript:
   require 'my.plugins.languages.typescript',
 }

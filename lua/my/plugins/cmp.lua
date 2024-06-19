@@ -24,6 +24,7 @@ return { -- Autocompletion
     --  into multiple repos for maintenance purposes.
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-path',
+    'hrsh7th/cmp-buffer',
     'onsails/lspkind-nvim',
 
     -- If you want to add a bunch of pre-configured snippets,
@@ -36,7 +37,6 @@ return { -- Autocompletion
     -- See `:help cmp`
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
-    local lspkind = require 'lspkind'
     luasnip.config.setup {}
 
     cmp.setup {
@@ -71,77 +71,22 @@ return { -- Autocompletion
         --  Generally you don't need this, because nvim-cmp will display
         --  completions whenever it has completion options available.
         ['<C-Space>'] = cmp.mapping.complete {},
-
-        -- Think of <c-l> as moving to the right of your snippet expansion.
-        --  So if you have a snippet that's like:
-        --  function $name($args)
-        --    $body
-        --  end
-        --
-        -- <c-l> will move you to the right of each of the expansion locations.
-        -- <c-h> is similar, except moving you backwards.
-        -- ['<C-l>'] = cmp.mapping(function()
-        --   if luasnip.expand_or_locally_jumpable() then
-        --     luasnip.expand_or_jump()
-        --   end
-        -- end, { 'i', 's' }),
-        ['<C-h>'] = cmp.mapping(function()
-          if luasnip.locally_jumpable(-1) then
-            luasnip.jump(-1)
-          end
-        end, { 'i', 's' }),
       },
       formatting = {
-        fields = { 'kind', 'abbr', 'menu' },
-        max_width = 100,
-        kind_icons = icons.kind,
-        format = lspkind.cmp_format {
-          mode = 'symbol', -- show only symbol annotations
-          maxwidth = 100, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-          -- can also be a function to dynamically calculate max width such as
-          -- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
-          ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-          show_labelDetails = true, -- show labelDetails in menu. Disabled by default
-          -- before = function(entry, vim_item)
-          --   vim_item.kind = icons.kind[vim_item.kind]
-          --
-          --   if entry.source.name == 'copilot' then
-          --     vim_item.kind = icons.git.Octoface
-          --     vim_item.kind_hl_group = 'CmpItemKindCopilot'
-          --   end
-          --
-          --   if entry.source.name == 'cmp_tabnine' then
-          --     vim_item.kind = icons.misc.Robot
-          --     vim_item.kind_hl_group = 'CmpItemKindTabnine'
-          --   end
-          --
-          --   if entry.source.name == 'crates' then
-          --     vim_item.kind = icons.misc.Package
-          --     vim_item.kind_hl_group = 'CmpItemKindCrate'
-          --   end
-          --
-          --   if entry.source.name == 'lab.quick_data' then
-          --     vim_item.kind = icons.misc.CircuitBoard
-          --     vim_item.kind_hl_group = 'CmpItemKindConstant'
-          --   end
-          --
-          --   if entry.source.name == 'emoji' then
-          --     vim_item.kind = icons.misc.Smiley
-          --     vim_item.kind_hl_group = 'CmpItemKindEmoji'
-          --   end
-          --
-          --   vim_item.menu = source_names[entry.source.name]
-          --   vim_item.dup = duplicates[entry.source.name] or 0
-          --
-          --   return vim_item
-          -- end,
-        },
+        format = function(_, item)
+          local cmp_icons = icons.kind
+          if cmp_icons[item.kind] then
+            item.kind = cmp_icons[item.kind] .. item.kind
+          end
+          return item
+        end,
       },
-      sources = {
+      sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        { name = 'luasnip' },
         { name = 'path' },
-      },
+      }, {
+        { name = 'buffer' },
+      }),
     }
   end,
 }

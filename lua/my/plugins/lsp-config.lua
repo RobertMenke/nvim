@@ -6,9 +6,16 @@ return { -- LSP Configuration & Plugins
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     { 'folke/neoconf.nvim', cmd = 'Neoconf', config = false, dependencies = { 'nvim-lspconfig' } },
-
+    -- opts = {
+    --   servers = {
+    --     sourcekit = {
+    --       cmd = { '/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin/sourcekit-lsp' },
+    --     },
+    --   },
+    -- },
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+    -- Currently using noice instead of fidget
     -- { 'j-hui/fidget.nvim', opts = {
     --   notification = {
     --     window = {
@@ -128,6 +135,15 @@ return { -- LSP Configuration & Plugins
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
+    -- Couldn't get swift/sourcekit working :/
+    -- Special config for swift via sourcekit
+    -- See: https://github.com/apple/sourcekit-lsp/blob/main/Editors/README.md
+    -- local lspconfig = require 'lspconfig'
+    -- lspconfig.sourcekit.setup {
+    --   cmd = { '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp' },
+    --   capabilities = vim.tbl_deep_extend('force', {}, capabilities, {}),
+    --   root_dir = lspconfig.util.root_pattern('.git', 'Package.swift', 'compile_commands.json'),
+    -- }
     -- Enable the following language servers
     --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
     --
@@ -150,7 +166,6 @@ return { -- LSP Configuration & Plugins
       -- But for many setups, the LSP (`tsserver`) will work just fine
       -- tsserver = {},
       --
-
       lua_ls = {
         -- cmd = {...},
         -- filetypes { ...},

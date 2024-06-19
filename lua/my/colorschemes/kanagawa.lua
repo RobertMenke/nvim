@@ -15,7 +15,7 @@ return {
       },
     }
     vim.api.nvim_command 'colorscheme kanagawa'
-    vim.api.nvim_command 'colorscheme kanagawa-wave'
+    vim.api.nvim_command 'colorscheme kanagawa-dragon'
     -- Telescope transparency
     vim.cmd 'highlight TelescopeBorder guibg=none'
     vim.cmd 'highlight TelescopeTitle guibg=none'
