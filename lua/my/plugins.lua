@@ -33,6 +33,7 @@ require('lazy').setup {
   require 'my.plugins.gitsigns',
   require 'my.plugins.indent-scope',
   require 'my.plugins.noice',
+  require 'my.plugins.fidget',
   require 'my.plugins.languages.neodev',
   require 'my.plugins.diffview',
  -- require 'my.airblade.vim-rooter',
