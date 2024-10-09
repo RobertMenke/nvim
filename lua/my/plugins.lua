@@ -26,7 +26,7 @@ require('lazy').setup {
   require 'my.plugins.autosave',
   require 'my.plugins.bqf',
   require 'my.plugins.treesitter-context',
-  -- require 'my.plugins.copilot',
+  require 'my.plugins.copilot',
   require 'my.plugins.dashboard',
   require 'my.plugins.lualine',
   require 'my.plugins.neogit',
