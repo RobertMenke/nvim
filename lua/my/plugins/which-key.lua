@@ -15,36 +15,30 @@
 local git = require 'my.utils.git'
 local fs = require 'my.utils.filesystem'
 local neotreeUtil = require 'my.utils.neotree'
+local function format()
+  require('conform').format { async = true, lsp_fallback = true }
+end
 
 return { -- Useful plugin to show you pending keybinds.
   'folke/which-key.nvim',
   event = 'VimEnter', -- Sets the loading event to 'VimEnter'
-  config = function() -- This is the function that runs, AFTER loading
-    require('which-key').setup()
-
-    local function format()
-      require('conform').format { async = true, lsp_fallback = true }
-    end
-    -- Document existing key chains
-    -- lsp-config.lua has several LSP related key mappings
-    require('which-key').register {
-      ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-      ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-      ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-      ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-      ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-      ['<leader>m'] = { '<cmd>Mason<cr>', '[M]ason' },
-      ['<leader>cf'] = { format, '[F]ormat code' },
-      ['<leader>cb'] = { fs.CopyBufferName, '[C]opy buffer path + name' },
-      ['<leader>cg'] = { git.BranchName, '[C]opy branch name' },
-      ['<leader>cd'] = { '<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>', 'Buffer [D]iagnostics' },
-      ['<leader>cc'] = { ':e $MYVIMRC <CR>', '[C]onfig' },
-      ['<leader>ct'] = { '<cmd>TSContextToggle<CR>', '[T]reesitter Context Toggle' },
-      ['<leader>gg'] = { '<cmd>Neogit<CR>', 'Neo[G]it' },
-      ['<leader>gd'] = { '<cmd>DiffviewOpen<CR>', '[D]iff view' },
-      ['<leader>e'] = { neotreeUtil.ToggleNeotree, 'N[E]otree' },
-      ['<leader>be'] = { neotreeUtil.BufferTree, 'Buffer explorer' },
-      ['<leader>cl'] = { '<cmd>LspInfo<cr>', 'Lsp Info' },
-    }
-  end,
+  keys = {
+    { '<leader>c', group = '[C]ode' },
+    { '<leader>d', group = '[D]ocument' },
+    { '<leader>r', group = '[R]ename' },
+    { '<leader>s', group = '[S]earch' },
+    { '<leader>w', group = '[W]orkspace' },
+    { '<leader>cb', fs.CopyBufferName, desc = '[C]opy buffer path + name' },
+    { '<leader>cc', ':e $MYVIMRC <CR>', desc = '[C]onfig' },
+    { '<leader>cd', '<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>', desc = 'Buffer [D]iagnostics' },
+    { '<leader>cf', format, desc = '[F]ormat code' },
+    { '<leader>cg', git.BranchName, desc = '[C]opy branch name' },
+    { '<leader>cl', '<cmd>LspInfo<cr>', desc = 'Lsp Info' },
+    { '<leader>ct', '<cmd>TSContextToggle<CR>', desc = '[T]reesitter Context Toggle' },
+    { '<leader>be', neotreeUtil.BufferTree, desc = 'Buffer explorer' },
+    { '<leader>e', neotreeUtil.ToggleNeotree, desc = 'N[E]otree' },
+    { '<leader>gd', '<cmd>DiffviewOpen<CR>', desc = '[D]iff view' },
+    { '<leader>gg', '<cmd>Neogit<CR>', desc = 'Neo[G]it' },
+    { '<leader>m', '<cmd>Mason<cr>', desc = '[M]ason' },
+  },
 }
